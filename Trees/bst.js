@@ -56,9 +56,26 @@ class Node {
         return this.lookup(value, node.right);
       }
     }
-    remove(){
 
-    }
+    getParent(value, node = this.root){
+        if(! this.root || node == null){
+          return null;
+        } 
+  
+        if(node.left && value == node.left.value){
+          return node;
+        }
+        else if(node.right && value == node.right.value){
+            return node;
+        }
+
+        else if(value < node.value){
+          return this.lookup(value, node.left);        
+        }
+        else{
+          return this.lookup(value, node.right);
+        }
+      }
   }
 
 const tree = new BinarySearchTree();
